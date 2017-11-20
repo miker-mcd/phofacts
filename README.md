@@ -19,5 +19,5 @@ The last command will launch the local server.
 ## The Team
 - [Michael McDonald](https://github.com/miker-mcd)
 - [Tony Brackins](https://github.com/mrbrackins)
-- Wing Ng
+- [Wing Ng](https://github.com/citrusapple)
 - [Marco Antonio Gutierrez](https://github.com/MarcoGutierrez)
