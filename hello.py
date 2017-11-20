@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, jsonify
 import requests
+import imghdr
 from dotenv import load_dotenv
 app = Flask(__name__)
 APP_ROOT = os.path.join(os.path.dirname(__file__))
@@ -10,10 +11,9 @@ place_consumer_key = os.getenv('GOOGLE_PLACES_KEY')
 
 search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 details_url = "https://maps.googleapis.com/maps/api/place/details/json"
+photos_url = "https://maps.googleapis.com/maps/api/place/photo?"
 
 @app.route("/", methods=["GET"])
-# def hello_world():
-#   return "Hello, World!"
 def show_restaurants():
   return render_template('index.html')
 
@@ -24,10 +24,24 @@ def results(query):
   search_json = search_req.json()
 
   place_id = search_json["results"][0]["place_id"]
+  place_location = search_json["results"][0]["geometry"]["location"]
 
   details_payload = {"key": place_consumer_key, "placeid": place_id}
   details_resp = requests.get(details_url, params=details_payload)
   details_json = details_resp.json()
 
+  photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
+
+  photo_payload = {"key":place_consumer_key, "maxwidth": 500, "photoreference":photo_id}
+  photo_request = requests.get(photos_url, params=photo_payload)
+
+  photo_type = imghdr.what("", photo_request.content)
+  photo_name = "static/" + query + "." + photo_type
+
+  with open(photo_name, "wb") as photo:
+    photo.write(photo_request.content)
+
   url = details_json["result"]["url"]
-  return jsonify({'result' : url})
+  return "<img src=" + photo_name + ">"
+  # return jsonify({'result' : url})
+  # return jsonify(place_location)
