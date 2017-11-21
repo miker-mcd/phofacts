@@ -8,6 +8,7 @@ APP_ROOT = os.path.join(os.path.dirname(__file__))
 dotenv_path = os.path.join(APP_ROOT, '.env')
 load_dotenv(dotenv_path)
 place_consumer_key = os.getenv('GOOGLE_PLACES_KEY')
+# Your Google Maps Embed API Key
 maps_consumer_key = os.getenv('GOOGLE_MAPS_EMBED_KEY')
 
 search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
@@ -15,11 +16,13 @@ details_url = "https://maps.googleapis.com/maps/api/place/details/json"
 photos_url = "https://maps.googleapis.com/maps/api/place/photo?"
 maps_url = "https://www.google.com/maps/embed/v1/search?key="
 
+# TODO: Replace with dynamic location info from user input or geolocation instead of explicit San Diego region.
 @app.route("/")
 def show_restaurants():
   map_req = maps_url + maps_consumer_key + "&q=pho+restaurants+in+San+Diego"
   return render_template('index.html', map=map_req)
 
+# The code below was a test for using the Google Places API from this guide (https://www.youtube.com/watch?v=kWncnBBxoJ4)
 @app.route("/sendRequest/<string:query>")
 def results(query):
   search_payload = {"key":place_consumer_key, "query":query}
