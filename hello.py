@@ -48,6 +48,9 @@ def results(query):
     photo.write(photo_request.content)
 
   url = details_json["result"]["url"]
-  return "<img src=" + photo_name + ">"
+  map_req = maps_url + maps_consumer_key + "&q=pho+restaurants+near+" + query
+    return "<iframe width='450' height='250' frameborder='0' style='border:0' src=' + map_req + ' allowfullscreen></iframe>"
+
+  # return "<img src=" + photo_name + ">"
   # return jsonify({'result' : url})
   # return jsonify(place_location)
