@@ -19,8 +19,9 @@ maps_url = "https://www.google.com/maps/embed/v1/search?key="
 # TODO: Replace with dynamic location info from user input or geolocation instead of explicit San Diego region.
 @app.route("/")
 def show_restaurants():
-  map_req = maps_url + maps_consumer_key + "&q=pho+restaurants+in+San+Diego"
-  return render_template('index.html', map=map_req)
+  # map_req = maps_url + maps_consumer_key + "&q=pho+restaurants+in+San+Diego"
+  # return render_template('index.html', map=map_req)
+  return render_template('index.html')
 
 # The code below was a test for using the Google Places API from this guide (https://www.youtube.com/watch?v=kWncnBBxoJ4)
 @app.route("/sendRequest/<string:query>")
@@ -36,21 +37,21 @@ def results(query):
   details_resp = requests.get(details_url, params=details_payload)
   details_json = details_resp.json()
 
-  photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
+  # photo_id = search_json["results"][0]["photos"][0]["photo_reference"]
 
-  photo_payload = {"key":place_consumer_key, "maxwidth": 500, "photoreference":photo_id}
-  photo_request = requests.get(photos_url, params=photo_payload)
+  # photo_payload = {"key":place_consumer_key, "maxwidth": 500, "photoreference":photo_id}
+  # photo_request = requests.get(photos_url, params=photo_payload)
 
-  photo_type = imghdr.what("", photo_request.content)
-  photo_name = "static/" + query + "." + photo_type
+  # photo_type = imghdr.what("", photo_request.content)
+  # photo_name = "static/" + query + "." + photo_type
 
-  with open(photo_name, "wb") as photo:
-    photo.write(photo_request.content)
+  # with open(photo_name, "wb") as photo:
+    # photo.write(photo_request.content)
 
   url = details_json["result"]["url"]
-  map_req = maps_url + maps_consumer_key + "&q=pho+restaurants+near+" + query
-    return "<iframe width='450' height='250' frameborder='0' style='border:0' src=' + map_req + ' allowfullscreen></iframe>"
+  map_req = maps_url + maps_consumer_key + "&zoom=12&q=pho+restaurants+in+" + query
 
+  return "<iframe width='450' height='250' frameborder='0' style='border:0' src=" + map_req + " allowfullscreen></iframe>"
   # return "<img src=" + photo_name + ">"
   # return jsonify({'result' : url})
   # return jsonify(place_location)
