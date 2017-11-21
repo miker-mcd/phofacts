@@ -3,7 +3,8 @@ $(document).ready(function(){
     var searchReq = $.get("/sendRequest/" + $("#query").val());
     searchReq.done(function(data){
       // $("#url").attr("href", data.result);
-      $("#image").html(data);
+      // $("#image").html(data);
+      $("#map").html(data);
     })
   })
 })
