@@ -30,7 +30,6 @@ def search_restaurants():
 
   map = Markup('<iframe width="450" height="250" frameborder="0" style="border:0" src="') + map_req + Markup('" allowfullscreen></iframe>')
 
-  restaurants = search_json["results"][0]
-  restaurant_name = search_json["results"][0]["name"]
+  restaurants = search_json["results"]
 
-  return render_template('show_restaurants.html', map=map, restaurant_name=restaurant_name)
+  return render_template('show_restaurants.html', map=map, restaurants=restaurants)
