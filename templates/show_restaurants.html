@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+{% block body %}
+<div id="map">{{ map }}</div>
+<ul>
+  {% for restaurant in restaurants %}
+  <li>{{ restaurant.name }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
