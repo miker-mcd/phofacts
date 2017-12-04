@@ -4,12 +4,13 @@
     <title>phofacts</title>
     <meta charset="UTF-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{ url_for('static', filename='script.js') }}""></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
   <body>
     <h1>Pho Restaurants</h1>
-    <input type="text" id="query" placeholder="Enter a zipcode">
-    <button id="search">Search</button>
-    <div id="map"></div>
+    <form action="{{ url_for('search_restaurants') }}" method=post>
+      <input type="text" name="query" id="query" placeholder="Enter a zipcode">
+      <button id="search">Search</button>
+    </form>
   </body>
 </html
