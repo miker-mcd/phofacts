@@ -26,10 +26,8 @@ def search_restaurants():
   search_req = requests.get(search_url, params=search_payload)
   search_json = search_req.json()
 
-  map_req = maps_url + maps_consumer_key + Markup('&zoom=12&q=pho+restaurants+in+') + zipcode
-
-  map = Markup('<iframe width="450" height="250" frameborder="0" style="border:0" src="') + map_req + Markup('" allowfullscreen></iframe>')
+  map_req = maps_url + maps_consumer_key + Markup('&zoom=10&q=pho+restaurants+in+') + zipcode
 
   restaurants = search_json["results"]
 
-  return render_template('show_restaurants.html', map=map, restaurants=restaurants)
+  return render_template('show_restaurants.html', map_req=map_req, restaurants=restaurants)
