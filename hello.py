@@ -31,4 +31,3 @@ def search_restaurants():
   restaurants = search_json["results"]
 
   return render_template('show_restaurants.html', map_req=map_req, restaurants=restaurants)
-

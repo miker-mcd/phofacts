@@ -5,7 +5,7 @@
 </div>
 <ul>
   {% for restaurant in restaurants %}
-  <li>{{ restaurant.name }}</li>
+  <li>{{ restaurant.name }}, Rating- {{ restaurant.rating }}, Price- {{ restaurant.price_level }}, {{ restaurant.formatted_address }}</li>
   {% endfor %}
 </ul>
 {% endblock %}
