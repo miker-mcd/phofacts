@@ -1,3 +1,38 @@
 body {
-  font-family: 'Georgia';
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+h1, h2, strong {
+  color: #333;
+}
+
+.restaurants {
+  list-style: none;
+  margin: 0 auto;
+  line-height: 1.5;
+  padding: 4em 1em;
+  color: #555;
+}
+
+.restaurants li {
+  margin: 0.8em 1.2em;
+}
+
+.homepage-hero {
+  background-image: url("/static/sharon-chen-352895.jpg");
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.homepage-hero_inner {
+  text-align: center;
+  color: white;
+/* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+*/
 }
