@@ -18,9 +18,14 @@ h1, h2, strong {
   margin: 0.8em 1.2em;
 }
 
+#map {
+  margin: auto;
+  width: 50%;
+}
+
 .homepage-hero {
   background-image: url("/static/sharon-chen-352895.jpg");
-  height: 50%;
+  height: 400px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,9 +35,9 @@ h1, h2, strong {
 .homepage-hero_inner {
   text-align: center;
   color: white;
-/* position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-*/
+
 }
