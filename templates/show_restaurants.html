@@ -1,11 +1,11 @@
 {% extends "index.html" %}
 {% block body %}
 <div id="map">
-  <iframe width="450" height="250" frameborder="0" style="border:0" src="{{ map_req }}" allowfullscreen></iframe>
+  <iframe height="250" frameborder="0" style="border:0;" src="{{ map_req }}" allowfullscreen></iframe>
 </div>
-<ul>
+<ul class='restaurants'>
   {% for restaurant in restaurants %}
-  <li>{{ restaurant.name }}, Rating- {{ restaurant.rating }}, Price- {{ restaurant.price_level }}, {{ restaurant.formatted_address }}</li>
+  <li><strong>{{ restaurant.name }}</strong>, Rating: {{ restaurant.rating }}, Price Level: {{ restaurant.price_level }}, Address: {{ restaurant.formatted_address }}</li>
   {% endfor %}
 </ul>
 {% endblock %}
