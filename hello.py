@@ -60,8 +60,8 @@ def search_restaurants():
     photo_request = requests.get(photos_url, params=photo_payload)
     photo_type = imghdr.what("", photo_request.content)
     photo_name = "static/" + zipcode + str(count) + "." + photo_type
-    # with open(photo_name, "wb") as photo:
-    #   photo.write(photo_request.content)
+    with open(photo_name, "wb") as photo:
+      photo.write(photo_request.content)
     photo_sources.append(photo_name)
     count += 1
     time.sleep(.300)
