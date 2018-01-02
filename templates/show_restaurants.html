@@ -3,9 +3,16 @@
 <div id="map">
   <iframe height="250" frameborder="0" style="border:0;" src="{{ map_req }}" allowfullscreen></iframe>
 </div>
-<ul class='restaurants'>
-  {% for restaurant in restaurants %}
-  <li><strong>{{ restaurant.name }}</strong>, Rating: {{ restaurant.rating }}, Price Level: {{ restaurant.price_level }}, Address: {{ restaurant.formatted_address }}</li>
-  {% endfor %}
-</ul>
+<main>
+  <section class="cards">
+    {% for restaurant in restaurants %}
+    <article id="{{ restaurant.id }}">
+      <img class="article-img" src="{{ restaurant.image_url }}">
+      <div class="middle">
+        <div class="content">Hello World</div>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+</main>
 {% endblock %}

@@ -39,5 +39,53 @@ h1, h2, strong {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
 
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 30px;
+}
+
+.cards {
+  max-width: 960px;
+  margin: 0 auto 30px;
+}
+
+article {
+  position: relative;
+}
+
+.article-img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+article:hover .article-img {
+  opacity: 0.3;
+}
+
+article:hover .middle {
+  opacity: 1;
+}
+
+.middle .content {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  background: green;
+  color: #f1f1f1;
+  width: 100%;
 }
