@@ -71,33 +71,3 @@ def search_restaurants():
   map_req = maps_url + maps_consumer_key + Markup('&zoom=10&q=pho+restaurants+in+') + zipcode
 
   return render_template('show_restaurants.html', map_req=map_req, restaurants=restaurants)
-
-def restaurants():
-  zipcode = request.form["query"]
-  search_payload = {"key":place_consumer_key, "query": "pho+restaurants+in+" + zipcode}
-  search_req = requests.get(search_url, params=search_payload)
-  search_json = search_req.json()
-
-  map_req = maps_url + maps_consumer_key + Markup('&zoom=10&q=pho+restaurants+in+') + zipcode
-
-  restaurants = search_json["results"]
-
-  photo_list = collect_photos(restaurants)
-  photo_ids = collect_photo_refs(photo_list)
-
-  photo_sources = []
-  count = 0
-  for id in photo_ids:
-    photo_payload = {"key": place_consumer_key, "maxwidth": 500, "photoreference": id}
-    photo_request = requests.get(photos_url, params=photo_payload)
-    photo_type = imghdr.what("", photo_request.content)
-    photo_name = "static/" + zipcode + str(count) + "." + photo_type
-    # with open(photo_name, "wb") as photo:
-    #   photo.write(photo_request.content)
-    # photo_sources.append(photo_name)
-    # count += 1
-    # time.sleep(.300)
-
-  assign_imgsrc(restaurants, photo_sources)
-
-  return render_template('show_restaurants.html', map_req=map_req, restaurants=restaurants)
