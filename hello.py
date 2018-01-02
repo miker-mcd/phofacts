@@ -44,7 +44,7 @@ def search_request(host, path, api_key, url_params=None):
 @app.route('/restaurants', methods=['POST'])
 def search_restaurants():
   zipcode = request.form["query"]
-  url_params = {"term": "pho+restaurants", "location": zipcode, "limit": 3}
+  url_params = {"term": "pho+restaurants", "location": zipcode, "limit": 12}
   search_json = search_request(yelp_host, yelp_search, yelp_search_key, url_params=url_params)
 
   restaurants = search_json["businesses"]

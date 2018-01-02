@@ -6,8 +6,11 @@
 <main>
   <section class="cards">
     {% for restaurant in restaurants %}
-    <article>
+    <article id="{{ restaurant.id }}">
       <img class="article-img" src="{{ restaurant.image_url }}">
+      <div class="middle">
+        <div class="content">Hello World</div>
+      </div>
     </article>
     {% endfor %}
   </section>
