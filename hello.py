@@ -41,25 +41,6 @@ def search_request(host, path, api_key, url_params=None):
 
   return response.json()
 
-def collect_photos(restaurants):
-  photos = []
-  for restaurant in restaurants:
-    photos.append(restaurant['image_url'])
-  return photos;
-
-def collect_photo_refs(photos):
-  photo_refs = []
-  for photo in photos:
-    photo_refs.append(photo[0]['photo_reference'])
-  return photo_refs;
-
-def assign_imgsrc(restaurants,photo_sources):
-  count = 0
-  for restaurant in restaurants:
-      restaurant['img_src'] = photo_sources[count]
-      count += 1
-  return restaurants;
-
 @app.route('/restaurants', methods=['POST'])
 def search_restaurants():
   zipcode = request.form["query"]
