@@ -8,9 +8,7 @@
     {% for restaurant in restaurants %}
     <article id="{{ restaurant.id }}">
       <img class="article-img" src="{{ restaurant.image_url }}">
-      <div class="middle">
-        <div class="content">Hello World</div>
-      </div>
+      <div class="content"><h3>{{ restaurant.name }}</h3> Rating - {{ restaurant.rating }} Price lvl - {{ restaurant.price }}</div>
     </article>
     {% endfor %}
   </section>
