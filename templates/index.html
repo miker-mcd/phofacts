@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html>
+{% block html %}<html class="homepage-background">{% endblock %}
   <head>
     <title>phofacts</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
   <body>
+  {% block body %}
     <div class="homepage-hero">
       <div class="homepage-hero_inner">
         <h1>PhoFacts</h1>
         <form action="{{ url_for('search_restaurants') }}" method=post>
-          <input type="text" name="query" id="query" placeholder="Enter a zipcode">
-          <button id="search">Search</button>
+          <input type="search" name="query" id="query" placeholder="Enter a zipcode">
+          <button class="search-button" id="search"><i class="fa fa-search"></i></button>
         </form>
       </div>
     </div>
-    {% block body %}{% endblock %}
+  {% endblock %}
   </body>
 </html
