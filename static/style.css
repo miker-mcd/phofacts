@@ -23,7 +23,7 @@ h1, h2, h3, strong {
   width: 50%;
 }
 
-html {
+.homepage-background {
   background: url("/static/sharon-chen-352895.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -50,10 +50,15 @@ html {
   /*float: left;*/
   text-align: center;
   /*color: white;*/
+  font-size: 40px;
   position: relative;
   /*top: 50%;*/
   /*left: 50%;*/
   /*transform: translate(-50%, -50%);*/
+}
+
+.homepage-hero_inner h1 {
+  color: firebrick;
 }
 
 input[type="search"] {

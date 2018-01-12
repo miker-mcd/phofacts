@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+{% block html %}<html class="homepage-background">{% endblock %}
   <head>
     <title>phofacts</title>
     <meta charset="UTF-8" />
@@ -9,6 +9,7 @@
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
   <body>
+  {% block body %}
     <div class="homepage-hero">
       <div class="homepage-hero_inner">
         <h1>PhoFacts</h1>
@@ -18,6 +19,6 @@
         </form>
       </div>
     </div>
-    {% block body %}{% endblock %}
+  {% endblock %}
   </body>
 </html
